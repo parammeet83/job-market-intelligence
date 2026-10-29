@@ -93,5 +93,5 @@ Recorded only from commands actually run. Dates are UTC.
 | Frontend Vitest | 2026-10-29 | **22 passed** (2 files) |
 | Frontend lint / typecheck / build | 2026-10-29 | clean; build 710 kB JS (210 kB gzip) |
 | Playwright e2e against local stack (real data from a local ingestion run) | 2026-10-29 | **18 passed** (9 tests × desktop, mobile) |
-| CI on GitHub | — | see README *Verification status* |
-| Production smoke | — | see README *Verification status* |
+| CI on GitHub (run 40830848766, commit `94b2918`) | 2026-10-29 | **success** — backend 160 passed, coverage 89 %; frontend 22 passed; lint, types, build, `alembic check` clean; gitleaks: no leaks found |
+| Production smoke | — | not run: production not deployed yet |

@@ -148,9 +148,9 @@ Example SQL: [`sql/examples/`](sql/examples).
 | Local pipeline against live sources (dev database) | ✅ 2026-10-29: 442 records fetched, 364 valid in scope, 0 invalid; second run 0 inserted / 364 updated (idempotent) |
 | Backend tests (local PostgreSQL 17) | ✅ 160 passed |
 | Frontend tests | ✅ 22 passed; Playwright e2e on local stack 18 passed |
-| GitHub CI | ⏳ not yet run |
-| Production database / API / dashboard | ⏳ not yet deployed |
-| Scheduled ingestion | ⏳ configured, not yet run |
+| GitHub CI | ✅ 2026-10-29, run 40830848766 on `94b2918`: backend 160 passed (89 % coverage), frontend 22 passed, lint/types/build clean, `alembic check` clean, gitleaks no leaks |
+| Production database / API / dashboard | ⏳ not deployed — waiting for the Neon project connection string in the local `.env` (owner action, see [DEPLOYMENT.md](docs/DEPLOYMENT.md)); no cloud resources were created |
+| Scheduled ingestion | ⏳ workflow configured; not run yet (needs the `INGEST_DATABASE_URL` secret) |
 <!-- VERIFICATION:END -->
 
 ## Known limitations

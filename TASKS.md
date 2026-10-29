@@ -46,7 +46,7 @@ were checked against the live system.
 
 ## Phase 7 — GitHub Actions
 - [x] `ci.yml`, `ingest.yml`, `migrate.yml`, `smoke.yml` written, SHA-pinned, least privilege
-- [ ] First CI run green on GitHub
+- [x] First CI run green on GitHub (run 40830848766; the first run failed only because gitleaks-action cannot scan a root commit — replaced by the gitleaks binary)
 - [ ] Repository secrets configured (`INGEST_DATABASE_URL`; production environment: `MIGRATION_DATABASE_URL`, `EXPECTED_DATABASE_NAME`)
 - [ ] Manual ingestion workflow run succeeded
 - [ ] Scheduled ingestion observed running
@@ -61,8 +61,8 @@ were checked against the live system.
 ## Phase 9 — QA
 - [x] Backend: 160 tests passed locally (unit + PostgreSQL integration), ruff, mypy, `alembic check`
 - [x] Frontend: 22 tests, lint, typecheck, build; e2e 18/18 against local stack
-- [ ] Secret scan (gitleaks) clean locally and in CI
+- [x] Secret scan (gitleaks 8.30.1) clean locally (full history + every staged commit) and in CI
 
 ## Phase 10 — Delivery
-- [ ] Reviewed commits pushed to `origin/main` with the owner's Git identity, no co-author trailers
+- [x] Reviewed commits pushed to `origin/main` with the owner's Git identity, no co-author trailers
 - [ ] README updated with verified live URLs and results only
