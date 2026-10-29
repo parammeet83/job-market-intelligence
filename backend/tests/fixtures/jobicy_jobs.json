@@ -1,0 +1,88 @@
+{
+ "apiVersion": "2.2.19",
+ "lastUpdate": "2026-10-28T16:55:42+00:00",
+ "jobCount": 4,
+ "hasMore": false,
+ "nextCursor": null,
+ "success": true,
+ "statusCode": 200,
+ "jobs": [
+  {
+   "id": 900001,
+   "url": "https://jobicy.com/jobs/900001-senior-data-analyst",
+   "jobSlug": "900001-senior-data-analyst",
+   "jobTitle": "Sr. Data Analyst | USA | Remote",
+   "companyName": "Example Analytics Co",
+   "jobIndustry": [
+    "Data Science &amp; Analytics"
+   ],
+   "jobType": [
+    "Full-Time"
+   ],
+   "jobGeo": "USA",
+   "jobLevel": "Senior",
+   "jobExcerpt": "Analyse product data.",
+   "jobDescription": "&lt;p&gt;We need strong &lt;strong&gt;SQL&lt;/strong&gt;, Python and Power BI skills. Excel at stakeholder communication.&lt;/p&gt;",
+   "pubDate": "2026-10-27T10:00:00+00:00",
+   "salaryMin": 90000,
+   "salaryMax": 120000,
+   "salaryCurrency": "USD",
+   "salaryPeriod": "yearly"
+  },
+  {
+   "id": 900002,
+   "url": "https://jobicy.com/jobs/900002-data-engineer",
+   "jobTitle": "Data Engineer",
+   "companyName": "Example GmbH",
+   "jobIndustry": [
+    "Data Science &amp; Analytics"
+   ],
+   "jobType": [
+    "Contract"
+   ],
+   "jobGeo": "Europe",
+   "jobLevel": "Midweight",
+   "jobDescription": "<p>Build pipelines with Airflow, dbt and PySpark on AWS. R&amp;D background welcome.</p>",
+   "pubDate": "2026-10-26T08:00:00+00:00",
+   "salaryMin": 70000,
+   "salaryMax": 85000,
+   "salaryCurrency": "EUR",
+   "salaryPeriod": "yearly"
+  },
+  {
+   "id": 900003,
+   "url": "https://jobicy.com/jobs/900003-ml-engineer?utm_source=feed",
+   "jobTitle": "Machine Learning Engineer (Remote)",
+   "companyName": "Example AI Ltd",
+   "jobIndustry": [
+    "Software Engineering"
+   ],
+   "jobType": [
+    "Full-Time"
+   ],
+   "jobGeo": "UK",
+   "jobLevel": "Any",
+   "jobDescription": "<p>PyTorch, Docker, Kubernetes. Hybrid working from London twice a month.</p>",
+   "pubDate": "2026-10-25T08:00:00+00:00",
+   "salaryMin": 80000,
+   "salaryMax": 60000,
+   "salaryCurrency": "GBP",
+   "salaryPeriod": "yearly"
+  },
+  {
+   "id": 900004,
+   "url": "https://evil.example.com/jobs/900004",
+   "jobTitle": "Software Engineer",
+   "companyName": "Wrong Host Inc",
+   "jobIndustry": [
+    "Software Engineering"
+   ],
+   "jobType": [
+    "Full-Time"
+   ],
+   "jobGeo": "Canada",
+   "jobDescription": "<p>Java</p>",
+   "pubDate": "2026-10-25T08:00:00+00:00"
+  }
+ ]
+}

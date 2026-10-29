@@ -1,0 +1,63 @@
+[
+ {
+  "last_updated": 1793224395,
+  "legal": "API Terms of Service: Please link back ... (synthetic fixture)"
+ },
+ {
+  "id": "800001",
+  "slug": "remote-analytics-engineer-example",
+  "epoch": 1793200000,
+  "date": "2026-10-26T08:00:12+00:00",
+  "company": "Example Remote Inc",
+  "position": "Analytics Engineer",
+  "tags": [
+   "dbt",
+   "sql",
+   "snowflake"
+  ],
+  "description": "<p>Model data in dbt and Snowflake. Git required.</p>",
+  "location": "Seattle, Washington",
+  "salary_min": 100000,
+  "salary_max": 140000,
+  "url": "https://remoteOK.com/remote-jobs/remote-analytics-engineer-example-800001",
+  "apply_url": "https://remoteOK.com/remote-jobs/800001"
+ },
+ {
+  "id": "800002",
+  "slug": "account-executive-example",
+  "epoch": 1793200000,
+  "date": "2026-10-26T08:00:12+00:00",
+  "company": "Sales Example",
+  "position": "Account Executive",
+  "tags": [
+   "sales"
+  ],
+  "description": "<p>Sell.</p>",
+  "location": "",
+  "salary_min": 0,
+  "salary_max": 0,
+  "url": "https://remoteOK.com/remote-jobs/account-executive-example-800002"
+ },
+ {
+  "id": "800003",
+  "slug": "remote-backend-engineer",
+  "epoch": 1793200000,
+  "date": "2026-10-27T08:00:12+00:00",
+  "company": "Example Remote Inc",
+  "position": "Backend Engineer",
+  "tags": [
+   "golang",
+   "postgres"
+  ],
+  "description": "",
+  "location": "Remote",
+  "salary_min": 0,
+  "salary_max": 0,
+  "url": "https://remoteok.com/remote-jobs/remote-backend-engineer-800003"
+ },
+ {
+  "id": "",
+  "position": "Data Scientist",
+  "url": "https://remoteok.com/remote-jobs/x"
+ }
+]
