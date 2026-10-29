@@ -1,0 +1,331 @@
+# Versioned skill dictionary. Bump `version` whenever aliases or rules change; extraction
+# results are stored with the version that produced them (job_skills.dictionary_version).
+#
+# Matching rules (backend/ingestion/skills/extractor.py):
+#  * `aliases` match case-insensitively; `cs_aliases` match case-sensitively.
+#  * Every alias is bounded: it may not be preceded or followed by a letter, digit, "_", "+", "#"
+#    and may not be followed by ".<alnum>" (so "Node.js" != "Node", "GitHub" != "Git").
+#  * `not_followed_by` is an optional regex that vetoes a match (e.g. "excel at").
+version = "2026.10.1"
+
+categories = [
+  "Programming languages", "Data analysis", "Databases & SQL", "BI & visualization",
+  "Machine learning", "Data engineering", "Cloud & DevOps", "Spreadsheets & office",
+]
+
+# --- Programming languages ---
+[[skills]]
+slug = "python"
+name = "Python"
+category = "Programming languages"
+aliases = ["python", "python3"]
+
+[[skills]]
+slug = "r"
+name = "R"
+category = "Programming languages"
+cs_aliases = ["R", "RStudio", "R Studio"]
+# Avoid "R&D", "R'"; standalone capital R remains a known low-precision alias.
+not_followed_by = '\s*(?:&|\x27|/D\b)'
+
+[[skills]]
+slug = "java"
+name = "Java"
+category = "Programming languages"
+aliases = ["java"]
+
+[[skills]]
+slug = "javascript"
+name = "JavaScript"
+category = "Programming languages"
+aliases = ["javascript", "node.js", "nodejs"]
+
+[[skills]]
+slug = "typescript"
+name = "TypeScript"
+category = "Programming languages"
+aliases = ["typescript"]
+
+[[skills]]
+slug = "scala"
+name = "Scala"
+category = "Programming languages"
+aliases = ["scala"]
+
+[[skills]]
+slug = "go"
+name = "Go"
+category = "Programming languages"
+aliases = ["golang"]
+cs_aliases = ["Go (Golang)"]
+
+[[skills]]
+slug = "csharp"
+name = "C#"
+category = "Programming languages"
+aliases = ["c#", ".net", "dotnet"]
+
+[[skills]]
+slug = "cpp"
+name = "C++"
+category = "Programming languages"
+aliases = ["c++"]
+
+# --- Databases & SQL ---
+[[skills]]
+slug = "sql"
+name = "SQL"
+category = "Databases & SQL"
+aliases = ["sql", "t-sql", "tsql", "pl/sql", "ansi sql"]
+
+[[skills]]
+slug = "postgresql"
+name = "PostgreSQL"
+category = "Databases & SQL"
+aliases = ["postgresql", "postgres", "psql"]
+
+[[skills]]
+slug = "mysql"
+name = "MySQL"
+category = "Databases & SQL"
+aliases = ["mysql"]
+
+[[skills]]
+slug = "sql-server"
+name = "SQL Server"
+category = "Databases & SQL"
+aliases = ["sql server", "mssql", "ms sql"]
+
+[[skills]]
+slug = "mongodb"
+name = "MongoDB"
+category = "Databases & SQL"
+aliases = ["mongodb", "mongo db"]
+
+[[skills]]
+slug = "snowflake"
+name = "Snowflake"
+category = "Databases & SQL"
+cs_aliases = ["Snowflake", "SNOWFLAKE"]
+
+[[skills]]
+slug = "bigquery"
+name = "BigQuery"
+category = "Databases & SQL"
+aliases = ["bigquery", "big query"]
+
+[[skills]]
+slug = "redshift"
+name = "Redshift"
+category = "Databases & SQL"
+aliases = ["redshift"]
+
+# --- Data analysis ---
+[[skills]]
+slug = "pandas"
+name = "Pandas"
+category = "Data analysis"
+aliases = ["pandas"]
+
+[[skills]]
+slug = "numpy"
+name = "NumPy"
+category = "Data analysis"
+aliases = ["numpy"]
+
+[[skills]]
+slug = "statistics"
+name = "Statistics"
+category = "Data analysis"
+aliases = ["statistics", "statistical analysis", "statistical modeling", "statistical modelling"]
+
+[[skills]]
+slug = "ab-testing"
+name = "A/B testing"
+category = "Data analysis"
+aliases = ["a/b testing", "a/b tests", "ab testing", "experimentation platform"]
+
+[[skills]]
+slug = "jupyter"
+name = "Jupyter"
+category = "Data analysis"
+aliases = ["jupyter"]
+
+# --- BI & visualization ---
+[[skills]]
+slug = "power-bi"
+name = "Power BI"
+category = "BI & visualization"
+aliases = ["power bi", "powerbi", "power-bi"]
+
+[[skills]]
+slug = "tableau"
+name = "Tableau"
+category = "BI & visualization"
+aliases = ["tableau"]
+
+[[skills]]
+slug = "looker"
+name = "Looker"
+category = "BI & visualization"
+aliases = ["looker", "looker studio"]
+
+# --- Machine learning ---
+[[skills]]
+slug = "scikit-learn"
+name = "scikit-learn"
+category = "Machine learning"
+aliases = ["scikit-learn", "scikit learn", "sklearn"]
+
+[[skills]]
+slug = "tensorflow"
+name = "TensorFlow"
+category = "Machine learning"
+aliases = ["tensorflow"]
+
+[[skills]]
+slug = "pytorch"
+name = "PyTorch"
+category = "Machine learning"
+aliases = ["pytorch"]
+
+[[skills]]
+slug = "machine-learning"
+name = "Machine learning"
+category = "Machine learning"
+aliases = ["machine learning"]
+
+[[skills]]
+slug = "nlp"
+name = "NLP"
+category = "Machine learning"
+aliases = ["natural language processing"]
+cs_aliases = ["NLP"]
+
+[[skills]]
+slug = "llm"
+name = "LLMs"
+category = "Machine learning"
+aliases = ["large language model", "large language models"]
+cs_aliases = ["LLM", "LLMs"]
+
+# --- Data engineering ---
+[[skills]]
+slug = "spark"
+name = "Spark"
+category = "Data engineering"
+aliases = ["apache spark", "spark sql"]
+cs_aliases = ["Spark"]
+
+[[skills]]
+slug = "pyspark"
+name = "PySpark"
+category = "Data engineering"
+aliases = ["pyspark"]
+
+[[skills]]
+slug = "airflow"
+name = "Airflow"
+category = "Data engineering"
+aliases = ["airflow", "apache airflow"]
+
+[[skills]]
+slug = "dbt"
+name = "dbt"
+category = "Data engineering"
+aliases = ["dbt", "dbt core", "dbt cloud"]
+
+[[skills]]
+slug = "kafka"
+name = "Kafka"
+category = "Data engineering"
+aliases = ["kafka"]
+
+[[skills]]
+slug = "databricks"
+name = "Databricks"
+category = "Data engineering"
+aliases = ["databricks"]
+
+[[skills]]
+slug = "etl"
+name = "ETL / ELT"
+category = "Data engineering"
+aliases = ["etl", "elt", "etl/elt", "elt/etl"]
+
+[[skills]]
+slug = "hadoop"
+name = "Hadoop"
+category = "Data engineering"
+aliases = ["hadoop"]
+
+# --- Cloud & DevOps ---
+[[skills]]
+slug = "aws"
+name = "AWS"
+category = "Cloud & DevOps"
+aliases = ["aws", "amazon web services"]
+
+[[skills]]
+slug = "azure"
+name = "Azure"
+category = "Cloud & DevOps"
+aliases = ["azure", "microsoft azure"]
+
+[[skills]]
+slug = "gcp"
+name = "Google Cloud"
+category = "Cloud & DevOps"
+aliases = ["google cloud", "google cloud platform", "gcp"]
+
+[[skills]]
+slug = "docker"
+name = "Docker"
+category = "Cloud & DevOps"
+aliases = ["docker"]
+
+[[skills]]
+slug = "kubernetes"
+name = "Kubernetes"
+category = "Cloud & DevOps"
+aliases = ["kubernetes", "k8s"]
+
+[[skills]]
+slug = "terraform"
+name = "Terraform"
+category = "Cloud & DevOps"
+aliases = ["terraform"]
+
+[[skills]]
+slug = "git"
+name = "Git"
+category = "Cloud & DevOps"
+aliases = ["git"]
+
+[[skills]]
+slug = "linux"
+name = "Linux"
+category = "Cloud & DevOps"
+aliases = ["linux"]
+
+[[skills]]
+slug = "ci-cd"
+name = "CI/CD"
+category = "Cloud & DevOps"
+aliases = ["ci/cd", "continuous integration", "continuous delivery", "continuous deployment"]
+
+# --- Spreadsheets & office ---
+[[skills]]
+slug = "excel"
+name = "Excel"
+category = "Spreadsheets & office"
+aliases = ["microsoft excel", "ms excel", "advanced excel"]
+cs_aliases = ["Excel", "EXCEL"]
+# "Excel at ...", "excel in ..." are verbs, not the tool.
+not_followed_by = '\s+(?:at|in|as|with|under)\b'
+
+[[skills]]
+slug = "google-sheets"
+name = "Google Sheets"
+category = "Spreadsheets & office"
+aliases = ["google sheets"]

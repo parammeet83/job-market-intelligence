@@ -1,0 +1,78 @@
+# Source registry. Each source is independently enabled/disabled.
+# Permissions research: see docs/SOURCE_COMPLIANCE.md. A source whose terms are unclear
+# stays disabled. `allowed_hosts` is the SSRF allow-list: the HTTP client refuses any
+# other host for that source, and URLs are never taken from user input.
+
+[sources.jobicy]
+name = "Jobicy"
+enabled = true
+homepage_url = "https://jobicy.com"
+api_url = "https://jobicy.com/api/jobs"
+status_url = "https://jobicy.com/api/jobs/status"
+docs_url = "https://jobicy.com/jobs-rss-feed"
+access_method = "Public JSON API (no key)"
+allowed_hosts = ["jobicy.com"]
+attribution = "Job listings courtesy of Jobicy (https://jobicy.com). Apply links point to the original Jobicy listing."
+# Jobicy FAQ: "You can store, cache, process, and redistribute job data as needed."
+allow_row_export = true
+# Descriptions are kept only transiently for skill re-processing, then purged.
+retain_description_days = 30
+# Industry passes (slugs from https://jobicy.com/api/jobs?get=industries).
+industries = ["data-science", "engineering", "admin"]
+page_size = 200
+max_pages_per_industry = 10
+# Jobicy: "Start a new automated pass no more than once per hour."
+min_request_interval_seconds = 2.0
+# Explicit closure checks via the batch status endpoint (<=100 ids per request).
+status_check_enabled = true
+status_check_max_ids = 1000
+# Every job from these industries is in scope; titles still get a role category.
+require_role_match = false
+default_work_mode = "remote"
+
+[sources.remoteok]
+name = "Remote OK"
+enabled = true
+homepage_url = "https://remoteok.com"
+api_url = "https://remoteok.com/api"
+docs_url = "https://remoteok.com/api"
+access_method = "Public JSON API (no key)"
+allowed_hosts = ["remoteok.com"]
+attribution = "Job listings from Remote OK (https://remoteok.com). Each listing links back to its Remote OK page."
+# Remote OK's API notice requires a followed link-back and naming Remote OK; its terms do not
+# address storage or redistribution, so row-level CSV export is disabled (aggregates only).
+allow_row_export = false
+retain_description_days = 0
+# robots.txt: Crawl-delay: 1
+min_request_interval_seconds = 2.0
+status_check_enabled = false
+# Remote OK lists all categories; keep only titles that match a configured tech/data role.
+require_role_match = true
+default_work_mode = "remote"
+
+# --- Evaluated but disabled (see docs/SOURCE_COMPLIANCE.md) ---
+[sources.arbeitnow]
+name = "Arbeitnow"
+enabled = false
+homepage_url = "https://www.arbeitnow.com"
+api_url = "https://www.arbeitnow.com/api/job-board-api"
+docs_url = "https://www.arbeitnow.com/blog/job-board-api"
+access_method = "Public JSON API (not implemented)"
+allowed_hosts = ["www.arbeitnow.com"]
+attribution = "Arbeitnow"
+allow_row_export = false
+retain_description_days = 0
+disabled_reason = "Site terms limit materials to 'personal, non-commercial transitory viewing' and prohibit copying/mirroring; storage of historical observations is not clearly permitted."
+
+[sources.remotive]
+name = "Remotive"
+enabled = false
+homepage_url = "https://remotive.com"
+api_url = "https://remotive.com/api/remote-jobs"
+docs_url = "https://github.com/remotive-com/remote-jobs-api"
+access_method = "Public JSON API (not implemented)"
+allowed_hosts = ["remotive.com"]
+attribution = "Remotive"
+allow_row_export = false
+retain_description_days = 0
+disabled_reason = "API terms say 'Please do not submit Remotive jobs to third Party websites'; a public listing dashboard could conflict with this."

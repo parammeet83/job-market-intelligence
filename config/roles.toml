@@ -1,0 +1,39 @@
+# Role-category rules, evaluated top to bottom against the normalized title (case-insensitive).
+# The first matching category wins, so specific roles must precede generic ones.
+version = "2026.10.1"
+
+[[roles]]
+category = "Analytics Engineer"
+patterns = ['\banalytics engineer']
+
+[[roles]]
+category = "Machine Learning Engineer"
+patterns = ['\bmachine learning engineer', '\bml engineer', '\bmlops\b', '\bai engineer', '\bml/ai engineer', '\bai/ml engineer', '\bdeep learning engineer']
+
+[[roles]]
+category = "Data Engineer"
+patterns = ['\bdata engineer', '\bbig data engineer', '\betl developer', '\bdata platform engineer', '\bdata pipeline engineer']
+
+[[roles]]
+category = "Data Scientist"
+patterns = ['\bdata scientist', '\bdata science\b', '\bapplied scientist', '\bresearch scientist', '\bmachine learning scientist']
+
+[[roles]]
+category = "Business Intelligence Analyst"
+patterns = ['\bbusiness intelligence', '\bbi analyst', '\bbi developer', '\bbi engineer', '\bpower bi developer', '\btableau developer', '\breporting analyst']
+
+[[roles]]
+category = "Data Analyst"
+patterns = ['\bdata analyst', '\banalytics analyst', '\bproduct analyst', '\bmarketing analyst', '\bdata & analytics analyst', '\binsights analyst', '\bquantitative analyst']
+
+[[roles]]
+category = "Business Analyst"
+patterns = ['\bbusiness analyst', '\bbusiness systems analyst', '\bsystems analyst']
+
+[[roles]]
+category = "DevOps / Cloud Engineer"
+patterns = ['\bdevops\b', '\bsite reliability', '\bsre\b', '\bcloud engineer', '\bplatform engineer', '\binfrastructure engineer', '\bcloud architect']
+
+[[roles]]
+category = "Software Engineer"
+patterns = ['\bsoftware engineer', '\bsoftware developer', '\bbackend engineer', '\bback-end engineer', '\bfrontend engineer', '\bfront-end engineer', '\bfull[- ]?stack', '\bweb developer', '\bmobile engineer', '\bios engineer', '\bandroid engineer', '\b(?:python|java|golang|go|ruby|rust|node(?:\.js)?|react|php|\.net|c\+\+|typescript|javascript) (?:engineer|developer)', '\bengineering manager', '\bstaff engineer', '\bprincipal engineer', '\bqa engineer', '\btest automation engineer', '\bsoftware architect', '\bdeveloper\b']

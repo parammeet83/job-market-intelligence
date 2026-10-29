@@ -1,0 +1,49 @@
+# --- Secrets & environment (never commit real credentials) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# --- Database dumps / generated datasets ---
+*.dump
+*.sql.gz
+*.backup
+*.sqlite
+*.db
+data/
+exports/
+*.csv
+!backend/tests/fixtures/**/*.csv
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.egg-info/
+
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+*.tsbuildinfo
+
+# --- Tooling / OS ---
+.vercel/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

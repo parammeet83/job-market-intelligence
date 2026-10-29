@@ -1,0 +1,70 @@
+[project]
+name = "jobmarket-pulse"
+version = "0.1.0"
+description = "JobMarket Pulse: automated job-market data pipeline, analytics API and dashboard"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# Runtime dependencies of the read-only API (deployed to Vercel). Keep this list small:
+# ingestion-only libraries live in the "ingestion" dependency group.
+dependencies = [
+    "fastapi>=0.162.0",
+    "psycopg[binary]>=3.3.6",
+    "pydantic>=2.14.1",
+    "pydantic-settings>=2.16.2",
+    "sqlalchemy>=2",
+]
+
+[dependency-groups]
+ingestion = [
+    "alembic>=1.20.1",
+    "beautifulsoup4>=4.15.0",
+    "pandas>=3.1.0",
+    "pandera>=0.35.0",
+    "requests>=2.34.2",
+]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.3",
+    "types-requests>=2.33.0.20261006",
+    "uvicorn>=0.54.0",
+]
+
+[tool.uv]
+package = false
+default-groups = ["ingestion", "dev"]
+
+[tool.vercel]
+entrypoint = "backend.app.main:app"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["frontend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF"]
+ignore = ["S101", "S608", "RUF012", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"backend/tests/**" = ["S105", "S106", "S311"]
+"migrations/**" = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["backend"]
+ignore_missing_imports = true
+check_untyped_defs = true
+warn_unused_ignores = true
+exclude = ["backend/tests/"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+markers = ["integration: requires a PostgreSQL test database (TEST_DATABASE_URL)"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["backend"]
+omit = ["backend/tests/*"]
