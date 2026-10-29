@@ -94,4 +94,6 @@ Recorded only from commands actually run. Dates are UTC.
 | Frontend lint / typecheck / build | 2026-10-29 | clean; build 710 kB JS (210 kB gzip) |
 | Playwright e2e against local stack (real data from a local ingestion run) | 2026-10-29 | **18 passed** (9 tests × desktop, mobile) |
 | CI on GitHub (run 40830848766, commit `94b2918`) | 2026-10-29 | **success** — backend 160 passed, coverage 89 %; frontend 22 passed; lint, types, build, `alembic check` clean; gitleaks: no leaks found |
-| Production smoke | — | not run: production not deployed yet |
+| Playwright e2e against production, run from this machine | 2026-10-29 | **18 passed** (desktop + Pixel 7) |
+| Production smoke workflow on GitHub runners (run 40836104559) | 2026-10-29 | **18 passed** |
+| Production privilege verification (`roles verify`) | 2026-10-29 | 16/16 PASS |

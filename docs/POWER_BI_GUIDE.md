@@ -44,7 +44,7 @@ Use `RelativePath` + `Query` so the Power BI service can refresh the dataset.
 Only for people you trust with a database login. Use the **read-only** role (`jmp_api_ro`) or,
 better, a dedicated read-only role created the same way (`backend/ops/roles.py` shows the grants).
 
-- Host: the Neon **pooled** host for the project; port 5432; database `jobmarket_pulse`; SSL
+- Host: the Neon **pooled** host for the project; port 5432; database `neondb` (this deployment); SSL
   required (`sslmode=require`).
 - Power BI: *Get data → PostgreSQL database*; Import mode recommended (Neon Free computes suspend
   after 5 minutes of inactivity; DirectQuery would keep waking it and consume compute hours).

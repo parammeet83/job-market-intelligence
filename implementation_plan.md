@@ -22,10 +22,10 @@ Detailed checklist: [TASKS.md](TASKS.md).
 | 4 | SQL analytics: views + parameterised queries + examples | ✅ | validated against real local data and integration tests |
 | 5 | FastAPI read-only API + exports + role verification | ✅ | |
 | 6 | React dashboard (7 pages), responsive, accessible | ✅ | Playwright on desktop + phone |
-| 7 | GitHub Actions: CI, ingestion, migration, smoke | 🟡 | CI green on GitHub; ingestion/smoke need production secrets |
-| 8 | Deployment: Neon, roles, migrations, Vercel ×2, first ingestion | ⏳ | blocked: Neon connection string not yet present in local `.env` |
-| 9 | QA: full test suites, secret scan, production smoke | 🟡 | local done |
-| 10 | Commits, push, verify remote, README verified results | 🟡 | |
+| 7 | GitHub Actions: CI, ingestion, migration, smoke | 🟡 | CI and manual ingestion green; first scheduled run pending |
+| 8 | Deployment: Neon, roles, migrations, Vercel ×2, first ingestion | ✅ | live; see docs/DEPLOYMENT.md |
+| 9 | QA: full test suites, secret scan, production smoke | ✅ | |
+| 10 | Commits, push, verify remote, README verified results | ✅ | |
 
 ## Risks and mitigations
 | Risk | Mitigation |

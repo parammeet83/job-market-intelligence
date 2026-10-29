@@ -77,6 +77,21 @@ curl -s https://<api-domain>/api/v1/summary | python -m json.tool
 cd frontend && E2E_BASE_URL=https://<dashboard> E2E_API_URL=https://<api> npx playwright test
 ```
 
-## Current deployment status
+## Current deployment (verified 2026-10-29)
 
-See the README section *Verification status*; it lists only checks that were actually performed.
+| Item | Value |
+|---|---|
+| Neon | project created by the owner on the Free plan; database `neondb` (Neon default name, so `EXPECTED_DATABASE_NAME=neondb`); PostgreSQL 18.6 |
+| Schema | Alembic revision `0002` |
+| Roles | `jmp_api_ro`, `jmp_ingest` provisioned; `roles verify` 16/16 PASS (pooled endpoint) |
+| GitHub secrets | repository: `INGEST_DATABASE_URL`; environment `production`: `MIGRATION_DATABASE_URL`, `EXPECTED_DATABASE_NAME` |
+| GitHub variables | `DASHBOARD_URL`, `API_URL` |
+| Vercel API project | `jobmarket-pulse-api` → https://jobmarket-pulse-api.vercel.app (env: `API_DATABASE_URL`, `APP_ENV`, `LOG_LEVEL`, `CORS_ORIGINS`) |
+| Vercel web project | `jobmarket-pulse-web` → https://jobmarket-pulse-web.vercel.app (env: `VITE_API_BASE_URL`) |
+| Deploy method | Vercel CLI from this repository (`vercel deploy --prod`); the projects are not connected to Git, so code changes need a CLI redeploy |
+
+Note: the database name differs from the `jobmarket_pulse` suggested in step 1 — the Neon default
+`neondb` was kept; any name works as long as `EXPECTED_DATABASE_NAME` matches.
+
+Observed latency: first request after idle ~5 s (function cold start + Neon resuming from
+scale-to-zero); warm requests ~1–2.5 s from India to the US region.

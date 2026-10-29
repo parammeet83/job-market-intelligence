@@ -47,16 +47,17 @@ were checked against the live system.
 ## Phase 7 — GitHub Actions
 - [x] `ci.yml`, `ingest.yml`, `migrate.yml`, `smoke.yml` written, SHA-pinned, least privilege
 - [x] First CI run green on GitHub (run 40830848766; the first run failed only because gitleaks-action cannot scan a root commit — replaced by the gitleaks binary)
-- [ ] Repository secrets configured (`INGEST_DATABASE_URL`; production environment: `MIGRATION_DATABASE_URL`, `EXPECTED_DATABASE_NAME`)
-- [ ] Manual ingestion workflow run succeeded
+- [x] Repository secrets configured (`INGEST_DATABASE_URL`; production environment: `MIGRATION_DATABASE_URL`, `EXPECTED_DATABASE_NAME`)
+- [x] Manual ingestion workflow run succeeded (run 40835215566: 380 listings inserted)
 - [ ] Scheduled ingestion observed running
 
 ## Phase 8 — Deployment
-- [ ] Neon project `jobmarket-pulse` created on the Free plan (owner action)
-- [ ] Migrations applied; roles provisioned; `roles verify` 16/16 on production
-- [ ] API deployed to Vercel; `/api/v1/health` reports database ok; `/api/docs` reachable
-- [ ] Dashboard deployed to Vercel; CORS restricted to its origin
-- [ ] Live data visible; Playwright smoke passes against production (desktop + phone)
+- [x] Neon project `jobmarket-pulse` created on the Free plan (owner action)
+- [x] Migrations applied; roles provisioned; `roles verify` 16/16 on production
+- [x] API deployed to Vercel; `/api/v1/health` reports database ok; `/api/docs` reachable
+- [x] Dashboard deployed to Vercel; CORS restricted to its origin
+- [x] Live data visible; Playwright 18/18 against production from this machine (desktop + phone)
+- [x] Production smoke workflow green on GitHub (run 40836104559: 18 passed)
 
 ## Phase 9 — QA
 - [x] Backend: 160 tests passed locally (unit + PostgreSQL integration), ruff, mypy, `alembic check`
@@ -65,4 +66,4 @@ were checked against the live system.
 
 ## Phase 10 — Delivery
 - [x] Reviewed commits pushed to `origin/main` with the owner's Git identity, no co-author trailers
-- [ ] README updated with verified live URLs and results only
+- [x] README updated with verified live URLs and results only

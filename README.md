@@ -9,8 +9,21 @@ React dashboard.
 > values are shown as unknown — never as zero.
 
 <!-- LIVE-LINKS:START -->
-**Live deployment:** not yet verified — see [Verification status](#verification-status).
+**Live dashboard:** https://jobmarket-pulse-web.vercel.app ·
+**API:** https://jobmarket-pulse-api.vercel.app/api/v1/health ·
+**API docs:** https://jobmarket-pulse-api.vercel.app/api/docs
+(verified 2026-10-29 — see [Verification status](#verification-status))
+
+![Overview dashboard with live data](docs/screenshots/overview-desktop.png)
 <!-- LIVE-LINKS:END -->
+
+## Screenshots (production, 2026-10-29)
+| Skill intelligence | Salary insights | Data sources | Phone |
+|---|---|---|---|
+| ![Skills](docs/screenshots/skills-desktop.png) | ![Salaries](docs/screenshots/salaries-desktop.png) | ![Sources](docs/screenshots/sources-desktop.png) | ![Phone](docs/screenshots/overview-phone.png) |
+
+The first day of data means the trend charts have a single point; the dashboard says so instead of
+drawing a trend.
 
 ## Why this project
 Job boards show today's postings; they don't keep history, and they don't measure how often a
@@ -149,8 +162,11 @@ Example SQL: [`sql/examples/`](sql/examples).
 | Backend tests (local PostgreSQL 17) | ✅ 160 passed |
 | Frontend tests | ✅ 22 passed; Playwright e2e on local stack 18 passed |
 | GitHub CI | ✅ 2026-10-29, run 40830848766 on `94b2918`: backend 160 passed (89 % coverage), frontend 22 passed, lint/types/build clean, `alembic check` clean, gitleaks no leaks |
-| Production database / API / dashboard | ⏳ not deployed — waiting for the Neon project connection string in the local `.env` (owner action, see [DEPLOYMENT.md](docs/DEPLOYMENT.md)); no cloud resources were created |
-| Scheduled ingestion | ⏳ workflow configured; not run yet (needs the `INGEST_DATABASE_URL` secret) |
+| Production database (Neon Free, PostgreSQL 18.6, database `neondb`) | ✅ migrations at `0002`; roles provisioned; `roles verify` 16/16 PASS against production |
+| First production ingestion (GitHub Actions run 40835215566, manual) | ✅ succeeded: 458 fetched, 380 valid listings inserted (359 Jobicy, 21 Remote OK), 0 invalid, 78 out of scope, 380 observations, 1,598 skill links; all data-quality checks pass |
+| Production API (Vercel Hobby) | ✅ external checks: `/api/v1/health` → database ok; `/api/docs` 200; invalid input 422; POST 405; CORS allows only the dashboard origin |
+| Production dashboard (Vercel Hobby) | ✅ Playwright against production: 18/18 from this machine and 18/18 on GitHub runners (smoke run 40836104559), desktop 1440×900 + Pixel 7 |
+| Scheduled ingestion | ⏳ daily schedule configured (03:17 UTC) with the secret in place; the first *scheduled* run has not happened yet — only the manual run above is verified |
 <!-- VERIFICATION:END -->
 
 ## Known limitations
