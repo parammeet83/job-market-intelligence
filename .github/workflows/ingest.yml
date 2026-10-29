@@ -1,0 +1,56 @@
+name: Daily ingestion
+
+on:
+  schedule:
+    # 03:17 UTC daily: off the top of the hour, when GitHub schedules are most congested.
+    # GitHub may delay scheduled runs and disables them after 60 days without repo activity.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Validate and report without writing to the database"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ingestion
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      INGEST_DATABASE_URL: ${{ secrets.INGEST_DATABASE_URL }}
+      APP_ENV: production
+      LOG_LEVEL: INFO
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
+      - name: Install runtime + ingestion dependencies (locked, no dev tools)
+        run: uv sync --frozen --no-dev
+      - name: Check the writer secret is configured (value is never printed)
+        run: |
+          if [ -z "$INGEST_DATABASE_URL" ]; then
+            echo "::error::Repository secret INGEST_DATABASE_URL is not configured."
+            exit 1
+          fi
+      - name: Run pipeline
+        run: |
+          ARGS="--trigger ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          uv run python -m backend.ingestion.cli run $ARGS > summary.json
+          echo "Run summary written to the job summary."
+      - name: Print totals
+        if: always()
+        run: |
+          if [ -f summary.json ]; then
+            python3 -c "import json;d=json.load(open('summary.json'));print('status:',d['status']);print('totals:',json.dumps(d['totals']))"
+          fi
